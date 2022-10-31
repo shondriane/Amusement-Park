@@ -1,4 +1,6 @@
 const review = require('../models/review');
+const user = require ('../models/user');
+const ride = require ('../models/ride')
 
 
 const createReview = async (req, res) => {
