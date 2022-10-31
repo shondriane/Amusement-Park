@@ -17,7 +17,7 @@ router.get('/rides', controllers.getAllRides)
 router.put('/user/:userId',controllers.updateUser)
 router.delete('/user:userId',controllers.deleteUser)
 router.post('/user', controllers.createUser)
-router.get('/user', controllers.getAllUser)
+router.get('/user', controllers.getUserById)
 
 
 
