@@ -8,7 +8,7 @@ const Ride = new Schema(
         image: { type: String, required: true },
         heightRequirement: { type: String,  required: true},
         description: { type: String, required: true},
-        reviewId: {type: Schema.Types.ObjectId, ref:'Review'}
+        // reviewId: {type: Schema.Types.ObjectId, ref:'Review'}
     },
     { timestamps: true },
 )

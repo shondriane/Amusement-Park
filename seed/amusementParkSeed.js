@@ -1,6 +1,7 @@
 const db = require('../db')
 const Ride = require('../models/ride')
 const User = require('../models/user')
+const Review = require('../models/review')
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
@@ -28,13 +29,15 @@ const main = async () => {
 
   const review=[{
     
-        "date": "2022-10-31",
-        "rideId": "636025e88310aa9a05431539",
-        "comment": "This is the best ride ever!!!"
+        date: "2022-10-31",
+        rideId: "636025e88310aa9a05431539",
+        comment: "This is the best ride ever!!!"
     
   }]
 
   await Ride.insertMany(rides)
+  await User.insertMany(user)
+  await Review.insertMany(review)
   console.log('Created some rides!')
 }
 const run = async () => {

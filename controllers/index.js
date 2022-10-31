@@ -98,7 +98,7 @@ const createRide= async (req, res) => {
         const ride = await new Ride(req.body)
         await ride.save()
         return res.status(201).json({
-            review,
+            ride,
         });
     } catch (error) {
         return res.status(500).json({ error: error.message })
