@@ -45,8 +45,8 @@ const RideList = (props) => {
     setRides(rides.data.ride);
   };
 
-  const viewRideDetails = (userId, rideId) => {
-    navigate(`/account/${userId}/rides/${rideId}`);
+  const viewRideDetails = (userId, id) => {
+    navigate(`/account/${userId}/rides/${id}`);
   };
 
   useEffect(() => {
@@ -62,8 +62,11 @@ const RideList = (props) => {
         <div className="ride-list">
           <div className="ride-cards">
             {rides.map((result) => (
+      
               <Ride
+              
                 key={result._id}
+                user={userId}
                 id={result._id}
                 name={result.name}
                 image={result.image}

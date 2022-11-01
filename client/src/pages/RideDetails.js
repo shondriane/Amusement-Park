@@ -4,18 +4,37 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 const RideDetails = (props) => {
-    let { id } = useParams()
+    let { id,userId,rideId } = useParams()
     let navigate = useNavigate()
 
     const [ rideDetails, setRideDetails ] = useState()
+    const [currentUser, updateCurrentUser] = useState("");
 
     const getRideDetails = async () => {
-        const ride = await axios.get('http://localhost:3001/api/allrides')
+        const ride = await axios.get(`http://localhost:3001/api/ride/${rideId}`)
         setRideDetails(ride.data.ride)
     }
 
+    const getCurrentUser = async (id) => {
+        const userObject = await axios
+    
+          .get(`http://localhost:3001/api/user/${userId}`)
+    
+          .then((response) => {
+            console.log(response)
+            updateCurrentUser(response.data.userData);
+            return response;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      };
+    
+
     useEffect(() => {
         getRideDetails()
+        getCurrentUser(userId)
+
     }, [id])
 
     return (
@@ -39,6 +58,8 @@ const RideDetails = (props) => {
                 <div>
                     <h3>{rideDetails.description}</h3>
                 </div>
+                <h4>Hello There {currentUser.userName}</h4>
+               
             </div>
             ) : <h1>Not Found.</h1>} 
         </div>
