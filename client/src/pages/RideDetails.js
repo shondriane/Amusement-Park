@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react' 
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,Link } from 'react-router-dom'
+import Review from '../components/Review'
 
 const RideDetails = (props) => {
     let { id,userId,rideId } = useParams()
@@ -9,6 +10,7 @@ const RideDetails = (props) => {
 
     const [ rideDetails, setRideDetails ] = useState()
     const [currentUser, updateCurrentUser] = useState("");
+    const [reviews, setReview] = useState(null)
 
     const getRideDetails = async () => {
         const ride = await axios.get(`http://localhost:3001/api/ride/${rideId}`)
@@ -29,11 +31,21 @@ const RideDetails = (props) => {
             console.error(error);
           });
       };
+      const getReviews = async () => {
+        const response = await axios.get(
+          `http://localhost:3001/api/user/${userId}/rides/review/${rideId}`
+        )
+        console.log("is this working",response)
+        setReview(response.data.review)
+        
+        
+      }
     
 
     useEffect(() => {
         getRideDetails()
         getCurrentUser(userId)
+        getReviews()
 
     }, [id])
 
@@ -58,8 +70,18 @@ const RideDetails = (props) => {
                 <div>
                     <h3>{rideDetails.description}</h3>
                 </div>
-                <h4>Hello There {currentUser.userName}</h4>
                
+
+               {reviews.map((review)=>(
+                <Link to={`/review/${review._id}}`}>
+                    <Review
+                    key={review._id}
+                    name={currentUser.userName}
+                    comment={review.comment}
+                    date={review.date}
+                    />
+                </Link>
+               ))}
             </div>
             ) : <h1>Not Found.</h1>} 
         </div>
