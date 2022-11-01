@@ -24,8 +24,8 @@ const getAllReviews = async (req, res) => {
 };
 const getAllReviewsByRide = async (req, res) => {
   try {
-    const { id } = req.params;
-    const review = await Review.find({ rideId: id });
+    const { rideId } = req.params;
+    const review = await Review.find({ rideId: rideId });
     return res.status(200).json({ review });
   } catch (error) {
     return res.status(500).send(error.message);
