@@ -1,16 +1,14 @@
-import { Link, useParams } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 
-const Header = () => {
-  const { userId } = useParams()
-  console.log(userId)
+const Header = (props) => {
 
   return (
     <nav>
       <h1>Amusement Park Review</h1>
       <div>
         {<Link to="/">Home</Link>}
-        {<Link to={`/account/${userId}/rides`}>Ride List</Link>}
-        {<Link to={`/account/${userId}/addReview`}>AddReview</Link>}
+        {<Link to={`/account/${props.userObjectId}/rides`}>Ride List</Link>}
+        {<Link to={`/account/${props.userObjectId}/addReview`}>AddReview</Link>}
       </div>
     </nav>
   )
