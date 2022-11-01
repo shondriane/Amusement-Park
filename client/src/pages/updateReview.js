@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Navigate, useParams } from "react-router-dom";
 
-const AddReview = (props) => {
+const updateReview = (props) => {
   //variables
   const initialState = {
     userId: "",
@@ -15,11 +15,11 @@ const AddReview = (props) => {
   const [formState, setFormState] = useState(initialState);
   const [currentUser, updateCurrentUser] = useState("");
   const [rides, setRides] = useState([]);
-  const { userId } = useParams();
+  const { reviewId } = useParams();
 
   //functions
   const getRideList = async () => {
-    const rides = await axios.get("http://localhost:3001/api/allrides");
+    const rides = await axios.get(`http://localhost:3001/api/review/${reviewId}`);
     console.log(rides);
     setRides(rides.data.ride);
   };
@@ -52,7 +52,7 @@ const AddReview = (props) => {
     axios.post("http://localhost:3001/api/review", formState);
     setFormState(initialState);
     
-   Navigate(`http://localhost:3000/account/${userId}/rides`)
+   Navigate(`http://localhost:3001/account/${userId}/rides`)
   };
 
   const handleChange = (event) => {
@@ -64,7 +64,7 @@ const AddReview = (props) => {
   return (
     <div className="formContainer">
       <div className="formDiv">
-        <h1>Creating New Review</h1>
+        <h1>Update Review</h1>
         <label htmlFor="name">{userId}</label>
         <label htmlFor="name">{currentUser}</label>
         <label>Date:</label>
@@ -97,4 +97,4 @@ const AddReview = (props) => {
   );
 };
 
-export default AddReview;
+export default updateReview;

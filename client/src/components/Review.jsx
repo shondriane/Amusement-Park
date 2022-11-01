@@ -1,13 +1,15 @@
 const ReviewCard = ({ userName,comment }) => {
   
     return (
-      <div className="card" onClick={onClick}>
-    <h3> {date} </h3>
-      <h3> {userName}</h3>
-      <h3> {comment}</h3>
-    
-         
-      </div>
+<div className='box'>
+<div className='review-card'>
+   
+    <div className='review-card-details'>
+        <h3>{userName}</h3>
+        <p>{date}: {comment}</p>
+    </div>
+</div>
+</div>
     )
   }
   
