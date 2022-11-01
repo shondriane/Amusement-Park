@@ -7,7 +7,10 @@ router.get("/", (req, res) => res.send("This is root!"));
 //Routers for Reviews
 router.post("/review", controllers.createReview);
 router.get("/review", controllers.getAllReviews);
-router.get("/ride/review/:rideId", controllers.getAllReviewsByRide);
+router.get(
+  "/user/:userId/ride/review/:rideId",
+  controllers.getAllReviewsByRide
+);
 router.put("/review/:id", controllers.updateReview);
 router.delete("/review:id", controllers.deleteReview);
 
@@ -16,7 +19,6 @@ router.get("/allrides", controllers.getAllRides);
 router.post("/ride", controllers.createRide);
 router.put("/rides/:id", controllers.updateRide);
 router.delete("/rides/:id", controllers.deleteRide);
-
 
 //Routers for User
 router.put("/user/:userId", controllers.updateUser);
