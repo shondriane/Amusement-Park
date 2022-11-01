@@ -5,30 +5,30 @@ import axios from 'axios'
 
 const Review = (props) => {
     const navigate = useNavigate()
-    let { rideId } = useParams()
+    let { rideId,reviewId } = useParams()
     const { userId } = useParams();
-    // const {reviewId} = useParams();
-    const [review, setReview] = useState(null)
+  
+    const [review, setReview] = useState([])
     const [currentUser, updateCurrentUser] = useState("");
   
   
   
     const getReviews = async () => {
       const response = await axios.get(
-        `http://localhost:3001/api/user/${userId}/ride/review/${rideId}`
-      )
-      console.log(response)
-      setReview(response.data.review)
-      
-    }
+        `http://localhost:3001/api/user/${userId}/rides/review/${rideId}`
+      );
+      console.log("is this working", response);
+      console.log(response.data.review)
+      setReview(response.data.review);
+    };
   
     const getCurrentUser = async (id) => {
+      console.log(userId)
         const userObject = await axios
-          .get(`http://localhost:3001/user/${userId}`)
+          .get(`http://localhost:3001/api/user/${userId}`)
           .then((response) => {
             console.log(response)
             updateCurrentUser(response.data.userData);
-          
             return response;
           })
           .catch((error) => {
@@ -39,6 +39,7 @@ const Review = (props) => {
       useEffect(() => {
         if (userId.length === 24) {
           getCurrentUser(userId);
+          console.log("grrr")
           getReviews()
        
         }
@@ -47,7 +48,7 @@ const Review = (props) => {
   
   const removeReview=async()=>{
     if(window.confirm('Are you sure you wish to delete this item?')){
-      const remove = await axios.delete(`http://localhost:3001/review/${reviewId}`)
+      const remove = await axios.delete(`http://localhost:3001/api/user/${userId}/rides/review/${review[0]._id}`)
       navigate(-1)
     }
     }

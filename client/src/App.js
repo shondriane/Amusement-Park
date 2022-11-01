@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import NewAccount from "./pages/NewAccount";
 import RideList from "./pages/RideList";
 import RideDetails from "./pages/RideDetails";
+import Review from "./pages/Review";
 import AddReview from "./pages/AddReview";
 import { useEffect, useState } from "react";
 function App() {
@@ -32,7 +33,9 @@ function App() {
             path="/account/:userId/addReview"
             element={<AddReview updateUser={updateUserObjectId} />}
           />
+          <Route path ="account/:userId/rides/review/:reviewId/:rideId" element={<Review />}/>
         </Routes>
+        
       </main>
     </div>
   );
