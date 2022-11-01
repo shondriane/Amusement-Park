@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   // Variables
@@ -8,6 +9,7 @@ const Home = () => {
   let submitButton = (
     <input disabled type="submit" value="Create new account" />
   );
+  let navigate = useNavigate();
 
   const [userId, updateUserId] = useState("");
   const [userFormState, updateUserForm] = useState({
@@ -28,7 +30,7 @@ const Home = () => {
   const createAccount = async (e) => {
     e.preventDefault();
     const newUser = await axios
-      .post(`http://localhost:3001/user`, userFormState)
+      .post(`http://localhost:3001/api/user`, userFormState)
       .then((response) => {
         return response;
       })
@@ -38,6 +40,8 @@ const Home = () => {
     updateUserForm({
       userName: ""
     });
+    // Bring user to page that explain about their unique url.
+    navigate(`/new/${newUser.data._id}/${newUser.data.userName}`);
   };
 
   useEffect(() => {
@@ -59,7 +63,12 @@ const Home = () => {
     toRender = (
       <div>
         <div>Hello, you need to have an account first</div>
-        <button onClick={goCreateAccount}>Create Account</button>
+        <button className="click-able" onClick={goCreateAccount}>
+          Create Account
+        </button>
+        <div>
+          PS: If you have an account, you should use your unique url instead
+        </div>
       </div>
     );
   } else if (viewMode === "User Home") {
@@ -67,7 +76,7 @@ const Home = () => {
   } else if (viewMode === "Account Creation") {
     toRender = (
       <div>
-        <form>
+        <form onSubmit={createAccount}>
           <label>Username: </label>
           <input
             type="text"
