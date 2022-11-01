@@ -5,7 +5,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Review from "../components/Review";
 
 const RideDetails = (props) => {
-  let { id, userId, rideId } = useParams();
+  let { id, userId, rideId} = useParams();
   let navigate = useNavigate();
 
   const [rideDetails, setRideDetails] = useState();
@@ -45,7 +45,15 @@ const RideDetails = (props) => {
     getReviews();
   }, [id]);
 
-  console.log("this is my review", reviews);
+  const removeComment=async()=>{
+   
+    if(window.confirm('Are you sure you wish to delete this item?')){
+    const remove = await axios.delete(`http://localhost:3001/api/user/${userId}/rides/review/${reviews[0]._id}`)
+    navigate(-1)
+    }
+  
+}
+
   return (
     <div className="deets">
       {rideDetails ? (
@@ -76,6 +84,7 @@ const RideDetails = (props) => {
                 comment={review.comment}
                 date={review.date}
               />
+               <button onClick={removeComment}> Remove</button>
             </Link>
           ))}
         </div>

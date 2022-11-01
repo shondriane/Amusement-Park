@@ -10,7 +10,7 @@ router.get("/review", controllers.getAllReviews);
 router.get("/user/:id/rides/review/:rideId", controllers.getAllReviewsByRide);
 router.get("/review/:id", controllers.updateReview);
 router.put("/review/:id", controllers.updateReview);
-router.delete("/review:id", controllers.deleteReview);
+router.delete("/user/:id/rides/review/:reviewId", controllers.deleteReview);
 
 //Routers for Rides
 router.get("/allrides", controllers.getAllRides);
