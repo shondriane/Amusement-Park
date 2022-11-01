@@ -21,6 +21,7 @@ const RideDetails = (props) => {
     return (
         <div>
             Hello
+            
 
         </div>
     )
