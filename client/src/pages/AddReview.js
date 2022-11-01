@@ -26,7 +26,9 @@ const AddReview = (props) => {
 
   const getCurrentUser = async (id) => {
     const userObject = await axios
-      .get(`http://localhost:3001/user/${userId}`)
+
+      .get(`http://localhost:3001/api/user/${userId}`)
+
       .then((response) => {
         console.log(response)
         updateCurrentUser(response.data.userData);
@@ -65,8 +67,9 @@ const AddReview = (props) => {
     <div className="formContainer">
       <div className="formDiv">
         <h1>Creating New Review</h1>
-        <label htmlFor="name">{userId}</label>
-        <label htmlFor="name">{currentUser}</label>
+
+        <label htmlFor="name">{currentUser.userName}</label>
+
         <label>Date:</label>
         <input
           type="date"
