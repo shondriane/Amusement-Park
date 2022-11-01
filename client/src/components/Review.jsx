@@ -1,4 +1,4 @@
-const ReviewCard = ({ userName,comment }) => {
+const ReviewCard = ({ userName,comment,date }) => {
   
     return (
 <div className='box'>
