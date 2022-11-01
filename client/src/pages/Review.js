@@ -15,10 +15,10 @@ const Review = (props) => {
   
     const getReviews = async () => {
       const response = await axios.get(
-        `http://localhost:3001/user/${userId}/ride/review/${rideId}`
+        `http://localhost:3001/api/user/${userId}/ride/review/${rideId}`
       )
       console.log(response)
-      setReview(response.data.ride.reviewId)
+      setReview(response.data.review)
       
     }
   
