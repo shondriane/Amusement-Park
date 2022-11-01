@@ -24,8 +24,8 @@ const getAllReviews = async (req, res) => {
 };
 const getAllReviewsByRide = async (req, res) => {
   try {
-    const { id } = req.params;
-    const review = await Review.find({ rideId: id });
+    const { rideId } = req.params;
+    const review = await Review.find({ rideId: rideId });
     return res.status(200).json({ review });
   } catch (error) {
     return res.status(500).send(error.message);
@@ -34,8 +34,8 @@ const getAllReviewsByRide = async (req, res) => {
 
 const getAllReviewsByUserId = async (req, res) => {
   try {
-    const { id } = req.params;
-    const review = await Review.find({ userId: id });
+    const { userId } = req.params;
+    const review = await Review.find({ userId: userId });
     return res.status(200).json({ review });
   } catch (error) {
     return res.status(500).send(error.message);
@@ -64,7 +64,6 @@ const deleteReview = async (req, res) => {
     return res.status(500).send(error.message);
   }
 };
-
 
 //Ride Controllers
 const getAllRides = async (req, res) => {
@@ -100,7 +99,6 @@ const deleteRide = async (req, res) => {
   }
 };
 
-
 const createRide = async (req, res) => {
   try {
     const ride = await new Ride(req.body);
@@ -125,7 +123,6 @@ const getRideById = async (req, res) => {
     return res.status(500).send(error.message)
     } 
 }
-
 
 //User Controllers
 

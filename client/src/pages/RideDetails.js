@@ -40,8 +40,7 @@ const RideDetails = (props) => {
                     <h3>{rideDetails.description}</h3>
                 </div>
             </div>
-            ) : <h1>Not Found.</h1>}  
-       
+            ) : <h1>Not Found.</h1>} 
         </div>
     )
 
