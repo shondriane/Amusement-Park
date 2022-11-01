@@ -10,8 +10,8 @@ const RideDetails = (props) => {
     const [ rideDetails, setRideDetails ] = useState()
 
     const getRideDetails = async () => {
-        const rides = await axios.get('http://localhost:3001/api/allrides')
-        setRideDetails(rides.data.ride)
+        const ride = await axios.get('http://localhost:3001/api/allrides')
+        setRideDetails(ride.data.ride)
     }
 
     useEffect(() => {
@@ -19,11 +19,42 @@ const RideDetails = (props) => {
     }, [id])
 
     return (
-        <div>
-            Hello
+        <div className="deets">
+            {rideDetails ? (
+            <div className="ride-details">
+                <div>
+                    <h1 id="ride-name">{rideDetails.name}</h1>
+                </div>
+                <section className='image-box'>
+                    <img src={rideDetails.image} alt={rideDetails.name} />
+                </section>
+                <section className='location'>
+                    <h3>Location: </h3>
+                    <p>{rideDetails.location}</p>
+                </section>
+                <section className='height'>
+                    <h3>Height Requirement: </h3>
+                    <p>{rideDetails.heightRequirement}</p>
+                </section>
+                <div>
+                    <h3>{rideDetails.description}</h3>
+                </div>
+            </div>
+            ) : <h1>Not Found.</h1>}  
 
+            <div className="buttons">
+                <button onClick={goHome}>Return to Recipe List</button>
+                <button onClick={editRecipe}>Edit</button>
+                <button onClick={deleteRecipe}>Delete</button>
+            </div>        
         </div>
     )
 
 }
 export default RideDetails 
+
+// “name”:
+// “image”:
+// “location”:
+// “heightRequirement”:
+// “description”:
