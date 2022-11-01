@@ -9,11 +9,12 @@ const main = async () => {
 
   const rides = [
     {
-      name: 'Aloe Vera',
+      name: 'Roller Coaster',
       description:
-        'Aloe vera is a succulent plant species of the genus Aloe. An evergreen perennial, it originates from the Arabian Peninsula, but grows wild in tropical, semi-tropical, and arid climates around the world. It is cultivated for agricultural and medicinal uses.',
+        'This is about the roller coaster.',
       image:
         'https://upload.wikimedia.org/wikipedia/commons/4/4b/Aloe_vera_flower_inset.png',
+      location: "theme park",
       heightRequirement: '4',
       reviewId: "636025e88310aa9a05431557"
       
