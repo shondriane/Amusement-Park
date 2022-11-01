@@ -9,7 +9,6 @@ const RideList = (props) => {
   const [currentUser, updateCurrentUser] = useState("");
   const [rides, setRides] = useState([]);
   const { userId } = useParams();
-  console.log(userId);
   let navigate = useNavigate();
   let toRender = (
     <div>
@@ -62,9 +61,7 @@ const RideList = (props) => {
         <div className="ride-list">
           <div className="ride-cards">
             {rides.map((result) => (
-      
               <Ride
-              
                 key={result._id}
                 user={userId}
                 id={result._id}

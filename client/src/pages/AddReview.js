@@ -30,9 +30,9 @@ const AddReview = (props) => {
       .get(`http://localhost:3001/api/user/${userId}`)
 
       .then((response) => {
-        console.log(response)
+        console.log(response);
         updateCurrentUser(response.data.userData);
-      
+
         return response;
       })
       .catch((error) => {
@@ -43,23 +43,24 @@ const AddReview = (props) => {
   useEffect(() => {
     if (userId.length === 24) {
       getCurrentUser(userId);
-      setFormState({...formState,["userId"]: userId})
+      props.updateUser(userId);
+      setFormState({ ...formState, ["userId"]: userId });
       getRideList();
     }
   }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formState)
+    console.log(formState);
     axios.post("http://localhost:3001/api/review", formState);
     setFormState(initialState);
-    
-   Navigate(`http://localhost:3000/account/${userId}/rides`)
+
+    Navigate(`http://localhost:3000/account/${userId}/rides`);
   };
 
   const handleChange = (event) => {
-    console.log(event.target.id)
-    console.log(event.target.value)
+    console.log(event.target.id);
+    console.log(event.target.value);
     setFormState({ ...formState, [event.target.id]: event.target.value });
   };
 

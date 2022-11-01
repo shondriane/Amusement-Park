@@ -28,7 +28,10 @@ function App() {
             path="/account/:userId/rides/:rideId"
             element={<RideDetails />}
           />
-          <Route path="/account/:userId/addReview" element={<AddReview />} />
+          <Route
+            path="/account/:userId/addReview"
+            element={<AddReview updateUser={updateUserObjectId} />}
+          />
         </Routes>
       </main>
     </div>
