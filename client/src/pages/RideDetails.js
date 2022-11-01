@@ -41,12 +41,7 @@ const RideDetails = (props) => {
                 </div>
             </div>
             ) : <h1>Not Found.</h1>}  
-
-            <div className="buttons">
-                <button onClick={goHome}>Return to Recipe List</button>
-                <button onClick={editRecipe}>Edit</button>
-                <button onClick={deleteRecipe}>Delete</button>
-            </div>        
+       
         </div>
     )
 
