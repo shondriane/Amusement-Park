@@ -1,16 +1,16 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Ride from "../components/Ride";
 
-const RideList = () => {
+const RideList = (props) => {
   // Variables
   const [currentUser, updateCurrentUser] = useState("");
-  const [rides, setRides] = useState([])
+  const [rides, setRides] = useState([]);
   const { userId } = useParams();
-  console.log(userId)
-  let navigate = useNavigate()
+  console.log(userId);
+  let navigate = useNavigate();
   let toRender = (
     <div>
       <h5>Id is not valid, please create a new user account</h5>
@@ -24,7 +24,7 @@ const RideList = () => {
       .get(`http://localhost:3001/api/user/${id}`)
       .then((response) => {
         updateCurrentUser(response.data.userData);
-     
+
         return response;
       })
       .catch((error) => {
@@ -35,23 +35,23 @@ const RideList = () => {
   useEffect(() => {
     if (userId.length === 24) {
       getCurrentUser(userId);
+      props.updateUser(userId);
     }
   }, []);
 
   const getRideList = async () => {
-    const rides = await axios.get('http://localhost:3001/api/allrides')
-    console.log(rides)
-    setRides(rides.data.ride)
-  }
+    const rides = await axios.get("http://localhost:3001/api/allrides");
+    console.log(rides);
+    setRides(rides.data.ride);
+  };
 
   const viewRideDetails = (userId, rideId) => {
-    navigate(`/account/${userId}/rides/${rideId}`)
-  }
+    navigate(`/account/${userId}/rides/${rideId}`);
+  };
 
   useEffect(() => {
-    getRideList()
-  }, [])
-
+    getRideList();
+  }, []);
 
   // Conditional formatting
   if (currentUser.userName) {
@@ -60,15 +60,16 @@ const RideList = () => {
         <h2>Welcome {currentUser.userName}</h2>
         <div>Please select the ride you want to check.</div>
         <div className="ride-list">
-          <div className='ride-cards'>
-            {rides.map((result) => 
-            <Ride 
-              key={result._id}
-              id={result._id}
-              name={result.name}
-              image={result.image}
-              onClick={viewRideDetails}
-            /> )}
+          <div className="ride-cards">
+            {rides.map((result) => (
+              <Ride
+                key={result._id}
+                id={result._id}
+                name={result.name}
+                image={result.image}
+                onClick={viewRideDetails}
+              />
+            ))}
           </div>
         </div>
       </div>

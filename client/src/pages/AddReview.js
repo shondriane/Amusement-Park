@@ -1,61 +1,61 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const AddReview = () => {
   //variables
   const initialState = {
-    userId: '',
-    date: '',
-    rideId: '',
-    comment: ''
-  }
+    userId: "",
+    date: "",
+    rideId: "",
+    comment: ""
+  };
 
-  const [formState, setFormState] = useState(initialState)
-  const [currentUser, updateCurrentUser] = useState('')
-  const [rides, setRides] = useState([])
-  const { userId } = useParams()
+  const [formState, setFormState] = useState(initialState);
+  const [currentUser, updateCurrentUser] = useState("");
+  const [rides, setRides] = useState([]);
+  const { userId } = useParams();
 
   //functions
   const getRideList = async () => {
-    const rides = await axios.get('http://localhost:3001/api/allrides')
-    console.log(rides)
-    setRides(rides.data.ride)
-  }
+    const rides = await axios.get("http://localhost:3001/api/allrides");
+    console.log(rides);
+    setRides(rides.data.ride);
+  };
 
   const getCurrentUser = async (id) => {
     const userObject = await axios
       .get(`http://localhost:3001/account/${userId}`)
       .then((response) => {
-        updateCurrentUser(response.data.userData)
-        return response
+        updateCurrentUser(response.data.userData);
+        return response;
       })
       .catch((error) => {
-        console.error(error)
-      })
-  }
+        console.error(error);
+      });
+  };
 
   useEffect(() => {
     if (userId.length === 24) {
-      getCurrentUser(userId)
-      getRideList()
+      getCurrentUser(userId);
+      getRideList();
     }
-  }, [])
+  }, []);
 
   const handleSubmit = (event) => {
-    event.preventDefaut()
-    axios.post('http://localhost:3001/api/review', formState)
-    setFormState(initialState)
-  }
-  const handleChange=event=>{
-    setFormState({...formState,[event.target.id]:event.target.value})
-  }
+    event.preventDefaut();
+    axios.post("http://localhost:3001/api/review", formState);
+    setFormState(initialState);
+  };
+  const handleChange = (event) => {
+    setFormState({ ...formState, [event.target.id]: event.target.value });
+  };
   return (
     <div className="formContainer">
       <div className="formDiv">
         <h1>Creating New Review</h1>
-        <label htmlFor="name">{currentUser}</label>
+        <label htmlFor="name">{userId}</label>
         <label>Date:</label>
         <input
           type="date"
@@ -83,7 +83,7 @@ const AddReview = () => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AddReview
+export default AddReview;
