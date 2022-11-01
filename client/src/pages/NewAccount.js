@@ -1,7 +1,14 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 const NewAccount = (props) => {
-  const { userId, name } = useParams();
+  const { userId, name } = useParams()
+
+  useEffect(() => {
+    if (userId) {
+      props.updateUser(userId)
+    }
+  }, [])
   return (
     <div className="third">
       <br />
@@ -21,7 +28,7 @@ const NewAccount = (props) => {
       <br />
       Click the url above to visit our website with your newly created account.
     </div>
-  );
-};
+  )
+}
 
-export default NewAccount;
+export default NewAccount

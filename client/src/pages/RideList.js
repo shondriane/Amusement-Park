@@ -9,6 +9,7 @@ const RideList = () => {
   const [currentUser, updateCurrentUser] = useState("");
   const [rides, setRides] = useState([])
   const { userId } = useParams();
+  console.log(userId)
   let navigate = useNavigate()
   let toRender = (
     <div>
@@ -23,6 +24,7 @@ const RideList = () => {
       .get(`http://localhost:3001/api/user/${id}`)
       .then((response) => {
         updateCurrentUser(response.data.userData);
+     
         return response;
       })
       .catch((error) => {
