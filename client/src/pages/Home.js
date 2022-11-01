@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 const Home = () => {
   // Variables
 
@@ -31,7 +30,7 @@ const Home = () => {
   const createAccount = async (e) => {
     e.preventDefault();
     const newUser = await axios
-      .post(`http://localhost:3001/api/user`, userFormState)
+      .post(`/api/user`, userFormState)
       .then((response) => {
         return response;
       })

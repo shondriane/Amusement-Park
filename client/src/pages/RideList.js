@@ -21,7 +21,7 @@ const RideList = (props) => {
   // Functions
   const getCurrentUser = async (id) => {
     const userObject = await axios
-      .get(`http://localhost:3001/api/user/${id}`)
+      .get(`/api/user/${id}`)
       .then((response) => {
         updateCurrentUser(response.data.userData);
 
