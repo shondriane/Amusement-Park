@@ -4,16 +4,21 @@ const router = Router();
 
 router.get("/", (req, res) => res.send("This is root!"));
 
+//Routers for Reviews
 router.post("/review", controllers.createReview);
 router.get("/review", controllers.getAllReviews);
 router.get("/ride/review/:rideId", controllers.getAllReviewsByRide);
-
 router.put("/review/:id", controllers.updateReview);
 router.delete("/review:id", controllers.deleteReview);
-router.put("/rides/:rideId", controllers.updateRide);
-router.delete("/rides/:rideId", controllers.deleteRide);
-router.post("/rides", controllers.createRide);
-router.get("/rides", controllers.getAllRides);
+
+//Routers for Rides
+router.get("/allrides", controllers.getAllRides);
+router.post("/ride", controllers.createRide);
+router.put("/rides/:id", controllers.updateRide);
+router.delete("/rides/:id", controllers.deleteRide);
+
+
+//Routers for User
 router.put("/user/:userId", controllers.updateUser);
 router.delete("/user:userId", controllers.deleteUser);
 router.post("/user", controllers.createUser);

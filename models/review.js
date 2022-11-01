@@ -9,8 +9,6 @@ const Review = new Schema(
         rideId: {type: Schema.Types.ObjectId, ref:'Ride'},
        comment: { type: String, required: true },
         
-       
-       
     },
     { timestamps: true },
 )
