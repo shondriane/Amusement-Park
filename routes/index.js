@@ -17,6 +17,7 @@ router.get("/allrides", controllers.getAllRides);
 router.post("/ride", controllers.createRide);
 router.put("/rides/:id", controllers.updateRide);
 router.delete("/rides/:id", controllers.deleteRide);
+router.get("/ride/:id", controllers.getRideById)
 
 //Routers for User
 router.put("/user/:userId", controllers.updateUser);
