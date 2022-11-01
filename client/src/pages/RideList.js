@@ -37,7 +37,7 @@ const RideList = () => {
   }, []);
 
   const getRideList = async () => {
-    const rides = await axios.get('http://localhost:3001/api/rides')
+    const rides = await axios.get('http://localhost:3001/api/allrides')
     console.log(rides)
     setRides(rides.data.ride)
   }
