@@ -2,6 +2,7 @@ const Review = require("../models/review");
 const User = require("../models/user");
 const Ride = require("../models/ride");
 
+//review Controllers
 const createReview = async (req, res) => {
   try {
     const review = await new Review(req.body);
@@ -64,6 +65,17 @@ const deleteReview = async (req, res) => {
   }
 };
 
+
+//Ride Controllers
+const getAllRides = async (req, res) => {
+  try {
+    const ride = await Ride.find();
+    return res.status(200).json({ ride });
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
+};
+
 const updateRide = async (req, res) => {
   try {
     const ride = await Ride.findByIdAndUpdate(req.params.id, req.body, {
@@ -88,14 +100,6 @@ const deleteRide = async (req, res) => {
   }
 };
 
-const getAllRides = async (req, res) => {
-  try {
-    const ride = await Ride.find();
-    return res.status(200).json({ ride });
-  } catch (error) {
-    return res.status(500).send(error.message);
-  }
-};
 
 const createRide = async (req, res) => {
   try {
@@ -108,6 +112,9 @@ const createRide = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
+
+
+//User Controllers
 
 const deleteUser = async (req, res) => {
   try {
