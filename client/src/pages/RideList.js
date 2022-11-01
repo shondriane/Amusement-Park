@@ -40,7 +40,7 @@ const RideList = (props) => {
   }, []);
 
   const getRideList = async () => {
-    const rides = await axios.get("http://localhost:3001/api/allrides");
+    const rides = await axios.get("/api/allrides");
     console.log(rides);
     setRides(rides.data.ride);
   };
