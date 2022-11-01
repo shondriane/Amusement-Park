@@ -87,6 +87,7 @@ const deleteRide = async (req, res) => {
     return res.status(500).send(error.message);
   }
 };
+
 const getAllRides = async (req, res) => {
   try {
     const ride = await Ride.find();
