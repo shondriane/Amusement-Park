@@ -96,7 +96,7 @@ const RideDetails = (props) => {
           ))}
         </div>
       ) : (
-        <h1>Not Found.</h1>
+        <h1>Next in queue...</h1>
       )}
     </div>
   );
