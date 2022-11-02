@@ -21,21 +21,19 @@ const UpdateReview = (props) => {
 
   //functions
   const getRideComment = async () => {
-    const rides = await axios.get(
-      `http://localhost:3001/api/review/${reviewId}`
-    );
+    const rides = await axios.get(`/api/review/${reviewId}`);
     setCurrentRide(rides.data);
     setFormState(rides.data);
   };
 
   const getRideList = async () => {
-    const rides = await axios.get("http://localhost:3001/api/allrides");
+    const rides = await axios.get("/api/allrides");
     setRides(rides.data.ride);
   };
 
   const getCurrentUser = async (id) => {
     const userObject = await axios
-      .get(`http://localhost:3001/api/user/${userId}`)
+      .get(`/api/user/${userId}`)
       .then((response) => {
         updateCurrentUser(response.data.userData);
         return response;
