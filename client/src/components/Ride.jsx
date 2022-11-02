@@ -7,7 +7,7 @@ const Ride = (props ) => {
                     <img src={props.image} alt={props.name} />
                 </div>
                 <div className='ride-card-name'>
-                    <h2>{props.name}</h2>
+                    <h2 className='ride-name'>{props.name}</h2>
                 </div>
             </div>
         </div>

@@ -56,8 +56,8 @@ const RideList = (props) => {
   if (currentUser.userName) {
     toRender = (
       <div>
-        <h2>Welcome {currentUser.userName}</h2>
-        <div>Please select the ride you want to check.</div>
+        <h2 className='welcome-message'>Welcome {currentUser.userName}</h2>
+        <h3 className="check-ride">Please select the ride you want to check.</h3>
         <div className="ride-list">
           <div className="ride-cards">
             {rides.map((result) => (

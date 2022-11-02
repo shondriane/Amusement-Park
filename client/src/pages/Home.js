@@ -61,13 +61,13 @@ const Home = () => {
 
   if (viewMode === "No ID") {
     toRender = (
-      <div>
+      <div className="login-box">
         <div>Hello, you need to have an account first</div>
-        <button className="click-able" onClick={goCreateAccount}>
+        <button className="click-able" id="create-button" onClick={goCreateAccount}>
           Create Account
         </button>
         <div>
-          PS: If you have an account, you should use your unique url instead
+          If you have an account, you should use your unique url instead
         </div>
       </div>
     );
@@ -75,9 +75,9 @@ const Home = () => {
     toRender = <div>Welcome user {userId}</div>;
   } else if (viewMode === "Account Creation") {
     toRender = (
-      <div>
+      <div className="account-form">
         <form onSubmit={createAccount}>
-          <label>Username: </label>
+          <label id="username-label">Username: </label>
           <input
             type="text"
             placeholder="Username"
