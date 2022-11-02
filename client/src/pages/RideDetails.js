@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
 import Review from "../components/Review";
 
 const RideDetails = (props) => {
   let { id, userId, rideId } = useParams();
-  let navigate = useNavigate();
   let reviewToRender = <div></div>;
 
   const [rideDetails, setRideDetails] = useState();
@@ -21,11 +19,8 @@ const RideDetails = (props) => {
 
   const getCurrentUser = async (id) => {
     const userObject = await axios
-
       .get(`http://localhost:3001/api/user/${userId}`)
-
       .then((response) => {
-        console.log(response);
         updateCurrentUser(response.data.userData);
         return response;
       })
@@ -37,7 +32,6 @@ const RideDetails = (props) => {
     const response = await axios.get(
       `http://localhost:3001/api/user/${userId}/rides/review/${rideId}`
     );
-    console.log("is this working", response);
     setReview(response.data.review);
   };
 
@@ -56,7 +50,7 @@ const RideDetails = (props) => {
       const remove = await axios.delete(
         `http://localhost:3001/api/user/${userId}/rides/review/${reviewId}`
       );
-      navigate(-1);
+      setNeedReload(true);
     }
   };
 
@@ -69,8 +63,12 @@ const RideDetails = (props) => {
           <div>
             <h1 id="ride-name">{rideDetails.name}</h1>
           </div>
-          <section >
-            <img src={rideDetails.image} alt={rideDetails.name} className="image-box"/>
+          <section>
+            <img
+              src={rideDetails.image}
+              alt={rideDetails.name}
+              className="image-box"
+            />
           </section>
           <section className="location">
             <h3>Location: </h3>
@@ -83,14 +81,9 @@ const RideDetails = (props) => {
           <div className="description">
             <h3>{rideDetails.description}</h3>
           </div>
-        
-        
+
           {reviews.map((review) => (
-            // <Link
-            //   key={review._id}
-            //   to={`/account/${userId}/rides/review/${review._id}/${rideId}}`}
-            // >
-            <div key={review._id} className='reviews'>
+            <div key={review._id} className="reviews">
               <Review
                 key={review._id}
                 data={review}
@@ -99,10 +92,7 @@ const RideDetails = (props) => {
                 date={review.date}
                 handleRemove={removeComment}
               />
-              {/* <button onClick={removeComment}> Remove</button>; */}
             </div>
-
-            // </Link>
           ))}
         </div>
       ) : (
@@ -112,9 +102,3 @@ const RideDetails = (props) => {
   );
 };
 export default RideDetails;
-
-// “name”:
-// “image”:
-// “location”:
-// “heightRequirement”:
-// “description”:
