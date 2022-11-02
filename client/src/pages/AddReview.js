@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Navigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const AddReview = (props) => {
   //variables
@@ -16,6 +16,8 @@ const AddReview = (props) => {
   const [currentUser, updateCurrentUser] = useState("");
   const [rides, setRides] = useState([]);
   const { userId } = useParams();
+
+  let navigate = useNavigate();
 
   //functions
   const getRideList = async () => {
@@ -64,7 +66,7 @@ const AddReview = (props) => {
 
     setFormState(initialState);
 
-    Navigate(-1);
+    navigate(-1);
   };
 
   const handleChange = (event) => {
