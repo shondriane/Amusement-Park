@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
 import Review from "../components/Review";
 
 const RideDetails = (props) => {
   let { id, userId, rideId } = useParams();
-  let navigate = useNavigate();
   let reviewToRender = <div></div>;
 
   const [rideDetails, setRideDetails] = useState();
@@ -15,17 +13,14 @@ const RideDetails = (props) => {
   const [needReload, setNeedReload] = useState(true);
 
   const getRideDetails = async () => {
-    const ride = await axios.get(`http://localhost:3001/api/ride/${rideId}`);
+    const ride = await axios.get(`/api/ride/${rideId}`);
     setRideDetails(ride.data.ride);
   };
 
   const getCurrentUser = async (id) => {
     const userObject = await axios
-
-      .get(`http://localhost:3001/api/user/${userId}`)
-
+      .get(`/api/user/${userId}`)
       .then((response) => {
-        console.log(response);
         updateCurrentUser(response.data.userData);
         return response;
       })
@@ -35,9 +30,8 @@ const RideDetails = (props) => {
   };
   const getReviews = async () => {
     const response = await axios.get(
-      `http://localhost:3001/api/user/${userId}/rides/review/${rideId}`
+      `/api/user/${userId}/rides/review/${rideId}`
     );
-    console.log("is this working", response);
     setReview(response.data.review);
   };
 
@@ -54,9 +48,9 @@ const RideDetails = (props) => {
   const removeComment = async (reviewId) => {
     if (window.confirm("Are you sure you wish to delete this item?")) {
       const remove = await axios.delete(
-        `http://localhost:3001/api/user/${userId}/rides/review/${reviewId}`
+        `/api/user/${userId}/rides/review/${reviewId}`
       );
-      navigate(-1);
+      setNeedReload(true);
     }
   };
 
@@ -69,8 +63,12 @@ const RideDetails = (props) => {
           <div>
             <h1 id="ride-name">{rideDetails.name}</h1>
           </div>
-          <section >
-            <img src={rideDetails.image} alt={rideDetails.name} className="image-box"/>
+          <section>
+            <img
+              src={rideDetails.image}
+              alt={rideDetails.name}
+              className="image-box"
+            />
           </section>
           <div className="location-and-height">
             <section className="location">
@@ -90,11 +88,7 @@ const RideDetails = (props) => {
         
         
           {reviews.map((review) => (
-            // <Link
-            //   key={review._id}
-            //   to={`/account/${userId}/rides/review/${review._id}/${rideId}}`}
-            // >
-            <div key={review._id} className='reviews'>
+            <div key={review._id} className="reviews">
               <Review
                 key={review._id}
                 data={review}
@@ -103,22 +97,13 @@ const RideDetails = (props) => {
                 date={review.date}
                 handleRemove={removeComment}
               />
-              {/* <button onClick={removeComment}> Remove</button>; */}
             </div>
-
-            // </Link>
           ))}
         </div>
       ) : (
-        <h1>Not Found.</h1>
+        <h1>Next in queue...</h1>
       )}
     </div>
   );
 };
 export default RideDetails;
-
-// “name”:
-// “image”:
-// “location”:
-// “heightRequirement”:
-// “description”:

@@ -6,17 +6,22 @@ const NewAccount = (props) => {
   return (
     <div className="third">
       <h2>Welcome {name}! </h2>
-      <h4>Please save/bookmark the folowing url as it will be how you will login in
-      the future to your account.</h4>
+      <h4>
+        Please save/bookmark the folowing url as it will be how you will login
+        in the future to your account.
+      </h4>
       <h3>
-      {
-        <Link to={`/account/${userId}/rides`}>
-          http://localhost:3000/account/{userId}/rides
-        </Link>
-      }
+        {
+          <Link to={`/account/${userId}/rides`}>
+            https://adrenaline-junkies.herokuapp.com/account/{userId}/rides
+          </Link>
+        }
       </h3>
-      
-      <h4>Click the url above to visit our website with your newly created account.</h4>
+
+      <h4>
+        Click the url above to visit our website with your newly created
+        account.
+      </h4>
     </div>
   );
 };

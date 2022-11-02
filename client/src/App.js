@@ -5,7 +5,6 @@ import Home from "./pages/Home";
 import NewAccount from "./pages/NewAccount";
 import RideList from "./pages/RideList";
 import RideDetails from "./pages/RideDetails";
-import Review from "./pages/Review";
 import UpdateReview from "./pages/UpdateReview";
 
 import AddReview from "./pages/AddReview";
@@ -35,10 +34,6 @@ function App() {
             path="/account/:userId/addReview"
             element={<AddReview updateUser={updateUserObjectId} />}
           />
-          {/* <Route
-            path="account/:userId/rides/review/:reviewId/:rideId"
-            element={<Review />}
-          /> */}
           <Route
             path="updateReview/:reviewId/:userId"
             element={<UpdateReview />}

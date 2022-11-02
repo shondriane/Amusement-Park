@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Navigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const AddReview = (props) => {
   //variables
@@ -17,9 +17,11 @@ const AddReview = (props) => {
   const [rides, setRides] = useState([]);
   const { userId } = useParams();
 
+  let navigate = useNavigate();
+
   //functions
   const getRideList = async () => {
-    const rides = await axios.get("http://localhost:3001/api/allrides");
+    const rides = await axios.get("/api/allrides");
     console.log(rides);
     setRides(rides.data.ride);
   };
@@ -27,7 +29,7 @@ const AddReview = (props) => {
   const getCurrentUser = async (id) => {
     const userObject = await axios
 
-      .get(`http://localhost:3001/api/user/${userId}`)
+      .get(`/api/user/${userId}`)
 
       .then((response) => {
         console.log(response);
@@ -49,13 +51,22 @@ const AddReview = (props) => {
     }
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-    axios.post("http://localhost:3001/api/review", formState);
+
+    const newReview = await axios
+      .post(`/api/review`, formState)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
     setFormState(initialState);
 
-    Navigate(-1);
+    navigate(-1);
   };
 
   const handleChange = (event) => {
@@ -68,6 +79,7 @@ const AddReview = (props) => {
     <div className="formContainer">
       <div className="formDiv">
         <h1>Creating New Review</h1>
+
 
         <div className='form-review'>
 
@@ -101,6 +113,7 @@ const AddReview = (props) => {
           Send
         </button>
         </div>
+
       </div>
     </div>
   );
