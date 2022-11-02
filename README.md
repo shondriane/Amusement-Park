@@ -38,6 +38,15 @@ The project itself was deployed and can be [viewed here]().
 ### ***Photos***
 ![entity relationship diagram](./photos/erd.png)
 ![component hierarchy diagram](./photos/chd.png)
+![Login](./photos/Login.png)
+![CreateUser](./photos/CreateUser.png)
+![userLink](./photos/userLink.png)
+![RideList](./photos/RideList.png)
+![RideDetails](./photos/RideDetails.png)
+![addComment](./photos/addComment.png)
+![editReview](./photos/editReview.png)
+![updateReview](./photos/updateReview.png)
+
 
 ***
 
