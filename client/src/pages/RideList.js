@@ -22,6 +22,10 @@ const RideList = (props) => {
     const userObject = await axios
       .get(`/api/user/${id}`)
       .then((response) => {
+        console.log(
+          "This is response data userdata from getCurrent user",
+          response.data.userData
+        );
         updateCurrentUser(response.data.userData);
 
         return response;
@@ -53,11 +57,18 @@ const RideList = (props) => {
   }, []);
 
   // Conditional formatting
+  console.log("Before conditional rendering", currentUser.userName);
   if (currentUser.userName) {
     toRender = (
       <div>
-        <h2 className='welcome-message'>Welcome {currentUser.userName}</h2>
-        <h3 className="check-ride">Please select the ride you want to check.</h3>
+        {console.log(
+          "After conditional rendering for userName",
+          currentUser.userName
+        )}
+        <h2 className="welcome-message">Welcome {currentUser.userName}</h2>
+        <h3 className="check-ride">
+          Please select the ride you want to check.
+        </h3>
         <div className="ride-list">
           <div className="ride-cards">
             {rides.map((result) => (
