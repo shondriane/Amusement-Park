@@ -69,7 +69,9 @@ const AddReview = (props) => {
       <div className="formDiv">
         <h1>Creating New Review</h1>
 
-        <label htmlFor="name">{currentUser.userName}</label>
+        <div className='form-review'>
+
+        <label htmlFor="name" className="name">{currentUser.userName}</label>
 
         <label>Date:</label>
         <input
@@ -98,6 +100,7 @@ const AddReview = (props) => {
         <button onClick={handleSubmit} type="submit" className="send">
           Send
         </button>
+        </div>
       </div>
     </div>
   );
