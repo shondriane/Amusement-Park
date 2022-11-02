@@ -3,18 +3,21 @@
 }
 
 body {
-  background-color: #d2d4d7;
+  background-color: #BFEEE2;
   text-align: center;
 }
 
 #nav-logo {
   font-family: 'Faster One', cursive;
+  font-size: 20px;
+  color: #032F2C;
 }
 
 nav {
   display: grid;
-  grid-template-columns: [col1-start] 20% [col1-end col2-start] 45% [col2-end col3-start] 35% [col3-end];
-  background-color: lightgray;
+  grid-template-columns: [col1-start] 30% [col1-end col2-start] 35% [col2-end col3-start] 35% [col3-end];
+  background-color: #77EDCF;
+  margin: -6px
 }
 
 .nav-links {
@@ -32,7 +35,7 @@ main {
 }
 
 .login-box {
-  background-color: palegreen;
+  background-color: #77EDCF;
   margin: 100px 200px; 
   height: 200px;
   display: flex; 
@@ -40,9 +43,10 @@ main {
   align-items: center;
   justify-content: center;
   border: 5px solid black;
-  box-shadow: 10px 10px darkcyan;
+  box-shadow: 10px 10px #008B8B;
   font-family: 'Rajdhani', sans-serif;
-  font-weight: bold
+  font-weight: bold; 
+  color:#025252
 }
 
 #create-button {
@@ -59,7 +63,7 @@ main {
 }
 
 .account-form {
-  background-color: palegreen;
+  background-color: #77EDCF;
   margin: 100px 200px; 
   height: 200px;
   display: flex; 
@@ -69,11 +73,12 @@ main {
   border: 5px solid black;
   box-shadow: 10px 10px darkcyan;
   font-family: 'Rajdhani', sans-serif;
-  font-weight: bold
+  font-weight: bold;
+  font-size: 25px
 }
 
 .third {
-  background-color: palegreen;
+  background-color:#77EDCF;
   margin: 100px 150px; 
   height: 300px;
   display: flex; 
@@ -90,10 +95,12 @@ main {
   width: 400px;
   margin: 30px;
   text-align: center;
-  background-color: #759EBE;
+  background-color:#025252;
   font-family: 'Rajdhani', sans-serif;
   font-weight: bold;
-  border: 4px solid #164366
+  border: 4px solid #032F2C;
+  border-radius: 20px;
+  box-shadow: 5px 5px #008B8B;
 }
 
 .ride-card {
@@ -119,16 +126,29 @@ main {
 img {
   width: 350px;
   margin: 45px;
-  border: 5px solid #164366
+  border: 5px solid #032F2C;
+  border-radius: 15px
 }
 
 .welcome-message {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 50px
+  font-size: 50px;
+  color: #025252
+}
+
+.reviews {
+  color: white;
+}
+
+.review-card-details {
+  margin: 10px;
+  text-align: left
 }
 
 .check-ride {
   font-family: 'Rajdhani', sans-serif;
+  color: #025252;
+  font-size: 20px
 }
 
 .ride-card-name {
@@ -163,8 +183,6 @@ img {
   width: 300px
 }
 
-
-
 .ride-details {
   display: flex;
   flex-direction: column;
@@ -173,9 +191,86 @@ img {
 }
 
 .description {
-  width: 500px
+  width: 600px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 22px;
+  color: #032F2C
+}
+
+.review-header {
+  width: 600px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 40px;
+  margin: 30px 0 -15px 0
 }
 
 .image-box {
-  width: 700px
+  width: 700px;
+  box-shadow: 5px 5px #008B8B;
+}
+
+#ride-name {
+  font-size: 60px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
+  margin: 10px 0 -20px 0;
+  color: #032F2C
+}
+
+.location-and-height {
+  background-color: #77EDCF;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
+  border: 1px solid #025252;
+  width: 500px;
+  margin: -20px 0 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color:#032F2C
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
+  margin: 60px 0 0 0
+}
+
+.formDiv {
+  background-color: #77EDCF;
+  border: 3px solid #032F2C;
+  box-shadow: 5px 5px darkcyan;
+}
+
+
+.form-review {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  margin: 10px;
+  color:#032F2C 
+}
+
+.name {
+  font-size: 20px;
+  margin: 0 0 10px 0
+}
+
+.send {
+  background-color: teal;
+  color: white;
+  border: 2px solid black;
+  padding: 10px 15px;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+  margin: 22px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold
 }
