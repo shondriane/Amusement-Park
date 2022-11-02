@@ -151,8 +151,8 @@ const RideDetails = (props) => {
               />
             </div>
           ))}
-          <div>
-            <label htmlFor="comment">Comment</label>
+          <div className="comment-section">
+            <label className="comment-heading" htmlFor="comment">Comment</label>
             <textarea
               id="comment"
               cols="30"
@@ -160,7 +160,7 @@ const RideDetails = (props) => {
               onChange={handleChange}
               value={formState.comment}
             ></textarea>
-            <button onClick={handleSubmit} type="submit" className="send">
+            <button onClick={handleSubmit} type="submit" className="send-2">
               Submit
             </button>
           </div>

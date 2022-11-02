@@ -280,14 +280,44 @@ img {
 }
 
 .edit-Btn, .remove-Btn {
-  background-color:#77EDCF;
-  color: #025252;
+  background-color:#BFEEE2;
+  color: #032F2C;
   border: 2px solid black; 
   padding: 7px 10px; 
   text-align: center;
   margin: 5px;
   display: inline-block;
   font-size: 15px;
+  font-family: 'Quicksand', sans-serif;;
+  font-weight: bolder
+
+}
+
+.comment-section {
+  background-color: #77EDCF;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 4px solid #032F2C;
+  border-radius: 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
+  width: 350px
+}
+
+.send-2 {
+  background-color: teal;
+  color: white;
+  border: 2px solid black;
+  padding: 5px 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 20px;
+  margin: 22px;
   font-family: 'Rajdhani', sans-serif;
   font-weight: bold
+}
+
+.comment-heading {
+  font-size: 25px;
 }
