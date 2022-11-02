@@ -162,3 +162,20 @@ img {
 img {
   width: 300px
 }
+
+
+
+.ride-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.description {
+  width: 500px
+}
+
+.image-box {
+  width: 700px
+}

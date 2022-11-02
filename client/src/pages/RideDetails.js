@@ -69,8 +69,8 @@ const RideDetails = (props) => {
           <div>
             <h1 id="ride-name">{rideDetails.name}</h1>
           </div>
-          <section className="image-box">
-            <img src={rideDetails.image} alt={rideDetails.name} />
+          <section >
+            <img src={rideDetails.image} alt={rideDetails.name} className="image-box"/>
           </section>
           <section className="location">
             <h3>Location: </h3>
@@ -80,16 +80,17 @@ const RideDetails = (props) => {
             <h3>Height Requirement: </h3>
             <p>{rideDetails.heightRequirement}</p>
           </section>
-          <div>
+          <div className="description">
             <h3>{rideDetails.description}</h3>
           </div>
-
+        
+        
           {reviews.map((review) => (
             // <Link
             //   key={review._id}
             //   to={`/account/${userId}/rides/review/${review._id}/${rideId}}`}
             // >
-            <div key={review._id}>
+            <div key={review._id} className='reviews'>
               <Review
                 key={review._id}
                 data={review}
