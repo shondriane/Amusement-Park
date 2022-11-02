@@ -4,8 +4,8 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateReview = (props) => {
-  //variables
-  const navigate = useNavigate()
+  // //variables
+  const navigate = useNavigate();
   const initialState = {
     userId: "",
     date: "",
@@ -15,23 +15,29 @@ const UpdateReview = (props) => {
 
   const [formState, setFormState] = useState(initialState);
   const [currentUser, updateCurrentUser] = useState("");
+  const [currentRide, setCurrentRide] = useState("");
   const [rides, setRides] = useState([]);
-  const { reviewId,userId } = useParams();
+  const { reviewId, userId } = useParams();
 
   //functions
   const getRideComment = async () => {
-    const rides = await axios.get(`http://localhost:3001/api/review/${reviewId}`);
-    console.log("HEY",rides);
-    setRides(rides.data);
+    const rides = await axios.get(
+      `http://localhost:3001/api/review/${reviewId}`
+    );
+    setCurrentRide(rides.data);
+    setFormState(rides.data);
+  };
+
+  const getRideList = async () => {
+    const rides = await axios.get("http://localhost:3001/api/allrides");
+    setRides(rides.data.ride);
   };
 
   const getCurrentUser = async (id) => {
     const userObject = await axios
-      .get(`http://localhost:3001/user/${userId}`)
+      .get(`http://localhost:3001/api/user/${userId}`)
       .then((response) => {
-        console.log(response)
         updateCurrentUser(response.data.userData);
-      
         return response;
       })
       .catch((error) => {
@@ -40,25 +46,23 @@ const UpdateReview = (props) => {
   };
 
   useEffect(() => {
-    // if (userId.length === 24) {
-     getCurrentUser(userId);
-    //   setFormState({...formState,["userId"]: userId})
+    if (userId.length === 24) {
+      getCurrentUser(userId);
+      setFormState({ ...formState, ["userId"]: userId });
       getRideComment();
-    // }
+      getRideList();
+    }
   }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formState)
-    axios.post("http://localhost:3001/api/review", formState);
+    axios.put(`http://localhost:3001/api/review/${reviewId}`, formState);
     setFormState(initialState);
-    
-   navigate(-1)
+
+    navigate(-1);
   };
 
   const handleChange = (event) => {
-    console.log(event.target.id)
-    console.log(event.target.value)
     setFormState({ ...formState, [event.target.id]: event.target.value });
   };
 
@@ -67,7 +71,7 @@ const UpdateReview = (props) => {
       <div className="formDiv">
         <h1>Update Review</h1>
         <label htmlFor="name">{userId}</label>
-        <label htmlFor="name">{currentUser}</label>
+        <label htmlFor="name">{currentUser.userName}</label>
         <label>Date:</label>
         <input
           type="date"
@@ -75,11 +79,13 @@ const UpdateReview = (props) => {
           onChange={handleChange}
           value={formState.date}
         />
+        <label htmlFor="ride">Update Ride</label>
         <select id="rideId" onChange={handleChange} value={formState.rideId}>
-          <label htmlFor="ride">Add Ride</label>
           <option defaultValue="select ride">Select Ride</option>
           {rides.map((ride) => (
-            <option value={ride._id}>{ride.name}</option>
+            <option key={ride._id} value={ride._id}>
+              {ride.name}
+            </option>
           ))}
         </select>
         <label htmlFor="comment">Comment</label>
