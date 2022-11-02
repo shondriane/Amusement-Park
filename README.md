@@ -1,9 +1,8 @@
 # Amusement-Park
 ## Date 10/19/22
-### By: Shondriane Mesa-Wise, Rebecca Faulkerson and Fredy Laksmono
+### By: Shondriane Mesa-Wise, Rebecca Fulkerson and Fredy Laksmono
 
-[Github](https://github.com/shondriane)(https://github.com/ralicynf)(https://github.com/fredy-laksmono)
-[LinkedIn](https://www.linkedin.com/in/shondriane-mesa-wise/)(https://www.linkedin.com/in/fulkersonrebecca/)(https://www.linkedin.com/fredy-laksmono)
+#### [Github Shondriane](https://github.com/shondriane) | [Github Rebecca](https://github.com/ralicynf) | [Github Fredy](https://github.com/fredy-laksmono) | [LinkedIn Shondriane](https://www.linkedin.com/in/shondriane-mesa-wise/) | [LinkedIn Rebecca](https://www.linkedin.com/in/fulkersonrebecca/) | [LinkedIn Fredy](https://www.linkedin.com/fredy-laksmono)
 
 ***
 
