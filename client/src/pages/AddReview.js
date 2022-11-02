@@ -55,7 +55,7 @@ const AddReview = (props) => {
     axios.post("http://localhost:3001/api/review", formState);
     setFormState(initialState);
 
-    Navigate(`http://localhost:3000/account/${userId}/rides`);
+    Navigate(-1);
   };
 
   const handleChange = (event) => {

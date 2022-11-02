@@ -1,10 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Navigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const updateReview = (props) => {
+const UpdateReview = (props) => {
   //variables
+  const navigate = useNavigate()
   const initialState = {
     userId: "",
     date: "",
@@ -15,13 +16,13 @@ const updateReview = (props) => {
   const [formState, setFormState] = useState(initialState);
   const [currentUser, updateCurrentUser] = useState("");
   const [rides, setRides] = useState([]);
-  const { reviewId } = useParams();
+  const { reviewId,userId } = useParams();
 
   //functions
-  const getRideList = async () => {
+  const getRideComment = async () => {
     const rides = await axios.get(`http://localhost:3001/api/review/${reviewId}`);
-    console.log(rides);
-    setRides(rides.data.ride);
+    console.log("HEY",rides);
+    setRides(rides.data);
   };
 
   const getCurrentUser = async (id) => {
@@ -39,11 +40,11 @@ const updateReview = (props) => {
   };
 
   useEffect(() => {
-    if (userId.length === 24) {
-      getCurrentUser(userId);
-      setFormState({...formState,["userId"]: userId})
-      getRideList();
-    }
+    // if (userId.length === 24) {
+     getCurrentUser(userId);
+    //   setFormState({...formState,["userId"]: userId})
+      getRideComment();
+    // }
   }, []);
 
   const handleSubmit = (event) => {
@@ -52,7 +53,7 @@ const updateReview = (props) => {
     axios.post("http://localhost:3001/api/review", formState);
     setFormState(initialState);
     
-   Navigate(`http://localhost:3001/account/${userId}/rides`)
+   navigate(-1)
   };
 
   const handleChange = (event) => {
@@ -97,4 +98,4 @@ const updateReview = (props) => {
   );
 };
 
-export default updateReview;
+export default UpdateReview;

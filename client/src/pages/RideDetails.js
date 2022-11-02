@@ -77,7 +77,9 @@ const RideDetails = (props) => {
           </div>
 
           {reviews.map((review) => (
-            <Link to={`/review/${review._id}}`}>
+           
+            <Link key={review._id} to={`/account/${userId}/rides/review/${review._id}/${rideId}}`}>
+                {console.log("review",review.date)}
               <Review
                 key={review._id}
                 name={currentUser.userName}
