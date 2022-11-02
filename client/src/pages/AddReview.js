@@ -21,7 +21,7 @@ const AddReview = (props) => {
 
   //functions
   const getRideList = async () => {
-    const rides = await axios.get("http://localhost:3001/api/allrides");
+    const rides = await axios.get("/api/allrides");
     console.log(rides);
     setRides(rides.data.ride);
   };
@@ -29,7 +29,7 @@ const AddReview = (props) => {
   const getCurrentUser = async (id) => {
     const userObject = await axios
 
-      .get(`http://localhost:3001/api/user/${userId}`)
+      .get(`/api/user/${userId}`)
 
       .then((response) => {
         console.log(response);
@@ -56,7 +56,7 @@ const AddReview = (props) => {
     console.log(formState);
 
     const newReview = await axios
-      .post(`http://localhost:3001/api/review`, formState)
+      .post(`/api/review`, formState)
       .then((response) => {
         return response;
       })

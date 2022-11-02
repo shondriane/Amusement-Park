@@ -13,13 +13,13 @@ const RideDetails = (props) => {
   const [needReload, setNeedReload] = useState(true);
 
   const getRideDetails = async () => {
-    const ride = await axios.get(`http://localhost:3001/api/ride/${rideId}`);
+    const ride = await axios.get(`/api/ride/${rideId}`);
     setRideDetails(ride.data.ride);
   };
 
   const getCurrentUser = async (id) => {
     const userObject = await axios
-      .get(`http://localhost:3001/api/user/${userId}`)
+      .get(`/api/user/${userId}`)
       .then((response) => {
         updateCurrentUser(response.data.userData);
         return response;
@@ -30,7 +30,7 @@ const RideDetails = (props) => {
   };
   const getReviews = async () => {
     const response = await axios.get(
-      `http://localhost:3001/api/user/${userId}/rides/review/${rideId}`
+      `/api/user/${userId}/rides/review/${rideId}`
     );
     setReview(response.data.review);
   };
@@ -48,7 +48,7 @@ const RideDetails = (props) => {
   const removeComment = async (reviewId) => {
     if (window.confirm("Are you sure you wish to delete this item?")) {
       const remove = await axios.delete(
-        `http://localhost:3001/api/user/${userId}/rides/review/${reviewId}`
+        `/api/user/${userId}/rides/review/${reviewId}`
       );
       setNeedReload(true);
     }
