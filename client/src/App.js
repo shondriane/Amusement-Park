@@ -28,7 +28,7 @@ function App() {
           />
           <Route
             path="/account/:userId/rides/:rideId"
-            element={<RideDetails />}
+            element={<RideDetails updateUser={updateUserObjectId} />}
           />
           <Route
             path="/account/:userId/addReview"

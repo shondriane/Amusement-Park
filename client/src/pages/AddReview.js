@@ -80,40 +80,39 @@ const AddReview = (props) => {
       <div className="formDiv">
         <h1>Creating New Review</h1>
 
+        <div className="form-review">
+          <label htmlFor="name" className="name">
+            {currentUser.userName}
+          </label>
 
-        <div className='form-review'>
-
-        <label htmlFor="name" className="name">{currentUser.userName}</label>
-
-        <label>Date:</label>
-        <input
-          type="date"
-          id="date"
-          onChange={handleChange}
-          value={formState.date}
-        />
-        <label htmlFor="ride">Add Ride</label>
-        <select id="rideId" onChange={handleChange} value={formState.rideId}>
-          <option defaultValue="select ride">Select Ride</option>
-          {rides.map((ride) => (
-            <option key={ride._id} value={ride._id}>
-              {ride.name}
-            </option>
-          ))}
-        </select>
-        <label htmlFor="comment">Comment</label>
-        <textarea
-          id="comment"
-          cols="30"
-          rows="10"
-          onChange={handleChange}
-          value={formState.comment}
-        ></textarea>
-        <button onClick={handleSubmit} type="submit" className="send">
-          Send
-        </button>
+          <label>Date:</label>
+          <input
+            type="date"
+            id="date"
+            onChange={handleChange}
+            value={formState.date}
+          />
+          <label htmlFor="ride">Add Ride</label>
+          <select id="rideId" onChange={handleChange} value={formState.rideId}>
+            <option defaultValue="select ride">Select Ride</option>
+            {rides.map((ride) => (
+              <option key={ride._id} value={ride._id}>
+                {ride.name}
+              </option>
+            ))}
+          </select>
+          <label htmlFor="comment">Comment</label>
+          <textarea
+            id="comment"
+            cols="30"
+            rows="10"
+            onChange={handleChange}
+            value={formState.comment}
+          ></textarea>
+          <button onClick={handleSubmit} type="submit" className="send">
+            Submit
+          </button>
         </div>
-
       </div>
     </div>
   );
