@@ -42,8 +42,8 @@ const ReviewCard = (props) => {
     if(review.userId === props.currentUserId){
         manageReview = 
         (<div>
-            <button onClick={editSelectedReview}> Edit </button>
-            <button onClick={removeSelectedReview}> Remove</button>
+            <button className="edit-Btn" onClick={editSelectedReview}> Edit </button>
+            <button className="remove-Btn" onClick={removeSelectedReview}> Remove</button>
         </div>)
     }
 
