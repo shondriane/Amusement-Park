@@ -5,12 +5,14 @@ import { useNavigate, Link } from "react-router-dom";
 import Review from "../components/Review";
 
 const RideDetails = (props) => {
-  let { id, userId, rideId} = useParams();
+  let { id, userId, rideId } = useParams();
   let navigate = useNavigate();
+  let reviewToRender = <div></div>;
 
   const [rideDetails, setRideDetails] = useState();
   const [currentUser, updateCurrentUser] = useState("");
   const [reviews, setReview] = useState([]);
+  const [needReload, setNeedReload] = useState(true);
 
   const getRideDetails = async () => {
     const ride = await axios.get(`http://localhost:3001/api/ride/${rideId}`);
@@ -42,17 +44,23 @@ const RideDetails = (props) => {
   useEffect(() => {
     getRideDetails();
     getCurrentUser(userId);
-    getReviews();
   }, [id]);
 
-  const removeComment=async()=>{
-   
-    if(window.confirm('Are you sure you wish to delete this item?')){
-    const remove = await axios.delete(`http://localhost:3001/api/user/${userId}/rides/review/${reviews[0]._id}`)
-    navigate(-1)
+  if (needReload) {
+    getReviews();
+    setNeedReload(false);
+  }
+
+  const removeComment = async (reviewId) => {
+    if (window.confirm("Are you sure you wish to delete this item?")) {
+      const remove = await axios.delete(
+        `http://localhost:3001/api/user/${userId}/rides/review/${reviewId}`
+      );
+      navigate(-1);
     }
-  
-}
+  };
+
+  reviewToRender = <div></div>;
 
   return (
     <div className="deets">
@@ -77,17 +85,23 @@ const RideDetails = (props) => {
           </div>
 
           {reviews.map((review) => (
-           
-            <Link key={review._id} to={`/account/${userId}/rides/review/${review._id}/${rideId}}`}>
-                {console.log("review",review.date)}
+            // <Link
+            //   key={review._id}
+            //   to={`/account/${userId}/rides/review/${review._id}/${rideId}}`}
+            // >
+            <div key={review._id}>
               <Review
                 key={review._id}
-                name={currentUser.userName}
+                data={review}
+                currentUserId={currentUser._id}
                 comment={review.comment}
                 date={review.date}
+                handleRemove={removeComment}
               />
-               <button onClick={removeComment}> Remove</button>
-            </Link>
+              {/* <button onClick={removeComment}> Remove</button>; */}
+            </div>
+
+            // </Link>
           ))}
         </div>
       ) : (

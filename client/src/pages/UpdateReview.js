@@ -70,7 +70,6 @@ const UpdateReview = (props) => {
     <div className="formContainer">
       <div className="formDiv">
         <h1>Update Review</h1>
-        <label htmlFor="name">{userId}</label>
         <label htmlFor="name">{currentUser.userName}</label>
         <label>Date:</label>
         <input
@@ -97,7 +96,7 @@ const UpdateReview = (props) => {
           value={formState.comment}
         ></textarea>
         <button onClick={handleSubmit} type="submit" className="send">
-          Send
+          Update
         </button>
       </div>
     </div>
