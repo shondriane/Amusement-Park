@@ -1,6 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 const ReviewCard = (props) => {
+    const [reviewUser, updateReviewUser] = useState("")
+    const [needReviewUser, setNeedReviewUser] = useState(true)
     let navigate = useNavigate();
     const review = props.data
     console.log(review)
@@ -12,6 +16,25 @@ const ReviewCard = (props) => {
     const removeSelectedReview = () => {
         props.handleRemove(review._id)
     }
+
+    const getReviewUser = async (id) => {
+        const userObject = await axios
+          .get(`/api/user/${review.userId}`)
+          .then((response) => {
+            updateReviewUser(response.data.userData);
+    
+            return response;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      };
+
+
+      if(needReviewUser){
+        getReviewUser();
+        setNeedReviewUser(false)
+      }
     
     let manageReview = <div>
     </div>
@@ -29,7 +52,7 @@ const ReviewCard = (props) => {
 <div className='review-card'>
    
     <div className='review-card-details'>
-        <h3>{props.data.userName}</h3>
+        <h3>{reviewUser.userName}</h3>
         <p>{props.data.date}: {props.data.comment}</p>
         {manageReview}
     </div>

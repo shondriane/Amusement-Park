@@ -35,10 +35,10 @@ function App() {
             path="/account/:userId/addReview"
             element={<AddReview updateUser={updateUserObjectId} />}
           />
-          <Route
+          {/* <Route
             path="account/:userId/rides/review/:reviewId/:rideId"
             element={<Review />}
-          />
+          /> */}
           <Route
             path="updateReview/:reviewId/:userId"
             element={<UpdateReview />}
