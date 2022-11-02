@@ -78,11 +78,13 @@ const AddReview = (props) => {
           onChange={handleChange}
           value={formState.date}
         />
+        <label htmlFor="ride">Add Ride</label>
         <select id="rideId" onChange={handleChange} value={formState.rideId}>
-          <label htmlFor="ride">Add Ride</label>
           <option defaultValue="select ride">Select Ride</option>
           {rides.map((ride) => (
-            <option value={ride._id}>{ride.name}</option>
+            <option key={ride._id} value={ride._id}>
+              {ride.name}
+            </option>
           ))}
         </select>
         <label htmlFor="comment">Comment</label>
