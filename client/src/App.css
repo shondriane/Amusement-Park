@@ -173,9 +173,38 @@ img {
 }
 
 .description {
-  width: 500px
+  width: 600px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 22px
+}
+
+.review-header {
+  width: 600px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 40px;
+  margin: 30px 0 -15px 0
 }
 
 .image-box {
   width: 700px
+}
+
+#ride-name {
+  font-size: 60px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
+  margin: 0 0 -20px 0 
+}
+
+.location-and-height {
+  background-color: #759EBE;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
+  border: 1px solid #164366;
+  width: 500px;
+  margin: -20px 0 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
 }

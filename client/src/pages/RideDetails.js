@@ -72,17 +72,21 @@ const RideDetails = (props) => {
           <section >
             <img src={rideDetails.image} alt={rideDetails.name} className="image-box"/>
           </section>
-          <section className="location">
-            <h3>Location: </h3>
-            <p>{rideDetails.location}</p>
-          </section>
-          <section className="height">
-            <h3>Height Requirement: </h3>
-            <p>{rideDetails.heightRequirement}</p>
-          </section>
+          <div className="location-and-height">
+            <section className="location">
+                <h3>Location: </h3>
+                <p>{rideDetails.location}</p>
+            </section>
+            <section className="height">
+                <h3>Height Requirement: </h3>
+                <p>{rideDetails.heightRequirement}</p>
+            </section>
+           </div>
           <div className="description">
             <h3>{rideDetails.description}</h3>
           </div>
+
+          <h2 className='review-header'>Reviews</h2>
         
         
           {reviews.map((review) => (
