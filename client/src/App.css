@@ -230,7 +230,7 @@ img {
   color:#032F2C
 }
 
-.formContainer {
+.formContainer, .formDiv-2{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -240,10 +240,14 @@ img {
   margin: 60px 0 0 0
 }
 
-.formDiv {
+.formDiv, .formDiv-2 {
   background-color: #77EDCF;
   border: 3px solid #032F2C;
   box-shadow: 5px 5px darkcyan;
+}
+
+.formDiv-2 {
+  width: 500px
 }
 
 
@@ -271,6 +275,19 @@ img {
   display: inline-block;
   font-size: 20px;
   margin: 22px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold
+}
+
+.edit-Btn, .remove-Btn {
+  background-color:#77EDCF;
+  color: #025252;
+  border: 2px solid black; 
+  padding: 7px 10px; 
+  text-align: center;
+  margin: 5px;
+  display: inline-block;
+  font-size: 15px;
   font-family: 'Rajdhani', sans-serif;
   font-weight: bold
 }

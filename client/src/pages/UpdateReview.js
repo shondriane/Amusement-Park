@@ -66,7 +66,7 @@ const UpdateReview = (props) => {
 
   return (
     <div className="formContainer">
-      <div className="formDiv">
+      <div className="formDiv-2">
         <h1>Update Review</h1>
         <label htmlFor="name">{currentUser.userName}</label>
         <label>Date:</label>
